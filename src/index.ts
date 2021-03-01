@@ -58,6 +58,7 @@ app.post("/api/creatRoom", async (req, res) => {
       result: {
         text: "create youTube list collection",
         roomId,
+        password: isPrivateRoom && password ? password : "",
         status: 200,
       },
     })
