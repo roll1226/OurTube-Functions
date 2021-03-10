@@ -2,6 +2,7 @@ import * as functions from "firebase-functions"
 import * as express from "express"
 import * as admin from "firebase-admin"
 import * as cors from "cors"
+import { Base64 } from "js-base64"
 
 admin.initializeApp(functions.config().firebase)
 
@@ -58,7 +59,7 @@ app.post("/api/creatRoom", async (req, res) => {
       result: {
         text: "create youTube list collection",
         roomId,
-        password: isPrivateRoom && password ? password : "",
+        password: isPrivateRoom && password ? Base64.encode(password) : "",
         status: 200,
       },
     })
